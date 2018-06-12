@@ -42,3 +42,14 @@ for var in "vbbu" "vhss" "vmme" "vspgwc" "vspgwu"; do
     echo $(git log --format="%H" -n 1) > .git/refs/remotes/opencord/$CORD_VER;
     cd ..;
 done
+
+# oaibbu session
+rm -rf oaibbu
+git clone https://github.com/nick133371/oaiBBU oaibbu
+cd oaibbu;
+git remote add opencord https://github.com/nick133371/oaiBBU.git;
+git checkout cord-4.1;
+git pull opencord cord-4.1;
+cd ..;
+
+

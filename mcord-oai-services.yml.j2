@@ -41,6 +41,8 @@ imports:
    - custom_types/vspgwutenant.yaml
    - custom_types/vspgwuvendor.yaml
    - custom_types/vbbuservice.yaml
+   - custom_types/oaibbuservice.yaml
+
 
 topology_template:
   node_templates:
@@ -138,6 +140,19 @@ topology_template:
               node: {{ site_name }}_vbbu
               relationship: tosca.relationships.BelongsToOne
 
+    oaibbu_network:
+      type: tosca.nodes.Network
+      properties:
+        subnet: 10.0.4.0/24
+        name: oaibbu_network
+      requirements:
+          - template:
+              node: private_network_template
+              relationship: tosca.relationships.BelongsToOne
+          - owner:
+              node: {{ site_name }}_oaibbu
+              relationship: tosca.relationships.BelongsToOne
+
     vmme_network:
       type: tosca.nodes.Network
       properties:
@@ -201,6 +216,19 @@ topology_template:
 ### Service Class
 
 # OAI BBU Service, no service instance, only create Service & Network
+    service#oaibbu:
+      type: tosca.nodes.OAIBBUService
+      properties:
+        name: OAIBBUService
+        view_url: /admin/oaibbu/oaibbu/$id$/
+        kind: vbbu
+        public_key: {{ lookup('file', config_cord_profile_dir + '/key_import/mcord_rsa.pub') }}
+        private_key_fn: /opt/xos/services/oaibbu/keys/mcord_rsa
+      artifacts:
+        pubkey: /opt/cord_profile/key_import/mcord_rsa.pub
+
+
+# OAI BBU Service, no service instance, only create Service & Network
     service#vbbu:
       type: tosca.nodes.VBBUService
       properties:
@@ -261,6 +289,28 @@ topology_template:
         pubkey: /opt/cord_profile/key_import/mcord_rsa.pub
 
 ### Service Slice
+
+# OAI BBU develop Service slice, Use develop-oai-bbu as default iamge
+    {{ site_name }}_oaibbu:
+      description: oaiBBU Service Slice
+      type: tosca.nodes.Slice
+      properties:
+          name: {{ site_name }}_oaibbu1
+          default_isolation: vm
+          network: noauto
+      requirements:
+          - site:
+              node: {{ site_name }}
+              relationship: tosca.relationships.BelongsToOne
+          - service:
+              node: service#oaibbu
+              relationship: tosca.relationships.BelongsToOne
+          - default_image:
+              node: develop-oai-bbu
+              relationship: tosca.relationships.BelongsToOne
+          - default_flavor:
+              node: m1.large
+              relationship: tosca.relationships.BelongsToOne
 
 # OAI BBU Service slice, Use image-oai as default iamge
     {{ site_name }}_vbbu:
@@ -423,6 +473,17 @@ topology_template:
             node: m1.medium
             relationship: tosca.relationships.BelongsToOne
 
+# oaiBBU private network Slice
+    oaibbu_network_slice:
+      type: tosca.nodes.NetworkSlice
+      requirements:
+        - network:
+            node: oaibbu_network
+            relationship: tosca.relationships.BelongsToOne
+        - slice:
+            node: {{ site_name }}_oaibbu
+            relationship: tosca.relationships.BelongsToOne
+
 # vBBU private network Slice
     vbbu_network_slice:
       type: tosca.nodes.NetworkSlice
@@ -528,6 +589,26 @@ topology_template:
             relationship: tosca.relationships.BelongsToOne
         - slice:
             node: {{ site_name }}_vspgwu
+            relationship: tosca.relationships.BelongsToOne
+
+    oaibbu_management_network:
+      type: tosca.nodes.NetworkSlice
+      requirements:
+        - network:
+            node: management
+            relationship: tosca.relationships.BelongsToOne
+        - slice:
+            node: {{ site_name }}_oaibbu
+            relationship: tosca.relationships.BelongsToOne
+
+    oaibbu_public_network:
+      type: tosca.nodes.NetworkSlice
+      requirements:
+        - network:
+            node: public
+            relationship: tosca.relationships.BelongsToOne
+        - slice:
+            node: {{ site_name }}_oaibbu
             relationship: tosca.relationships.BelongsToOne
 
 # OAI Service instances

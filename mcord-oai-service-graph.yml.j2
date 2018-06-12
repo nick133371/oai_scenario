@@ -19,6 +19,7 @@ description: Persist M-CORD Subscriber
 
 imports:
    - custom_types/vbbuservice.yaml
+   - custom_types/oaibbuservice.yaml
    - custom_types/vhssservice.yaml
    - custom_types/vmmeservice.yaml
    - custom_types/vspgwcservice.yaml
@@ -33,6 +34,13 @@ topology_template:
       type: tosca.nodes.VBBUService
       properties:
         name: VBBUService
+
+    # Service OAIBBU
+    service#oaibbu:
+      type: tosca.nodes.OAIBBUService
+      properties:
+        name: OAIBBUService
+
 
     # Service VHSS
     service#vhss:
@@ -65,7 +73,7 @@ topology_template:
         connect_method: None
       requirements:
         - subscriber_service:
-            node: service#vbbu
+            node: service#oaibbu
             relationship: tosca.relationships.BelongsToOne
         - provider_service:
             node: service#vmme
@@ -78,7 +86,7 @@ topology_template:
         connect_method: None
       requirements:
         - subscriber_service:
-            node: service#vbbu
+            node: service#oaibbu
             relationship: tosca.relationships.BelongsToOne
         - provider_service:
             node: service#vspgwu
