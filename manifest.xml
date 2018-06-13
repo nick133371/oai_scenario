@@ -47,6 +47,7 @@
 <project path="orchestration/xos_services/epc-service" name="epc-service" groups="orchestration,services"/>
 
 <!-- vMME, vHSS, oaispgw is 3 component for oai-based M-CORD -->
+<project path="orchestration/xos_services/oaibbu" name="oaiBBU" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vbbu" name="vBBU" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vmme" name="vMME" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vhss" name="vHSS" groups="orchestration,services"/>

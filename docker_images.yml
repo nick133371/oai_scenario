@@ -1,4 +1,5 @@
 
+
 ---
 # Copyright 2017-present Open Networking Foundation
 #
@@ -264,3 +265,9 @@ buildable_images:
     repo: vBBU
     path: "xos/synchronizer"
     dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/oaibbu-synchronizer
+    repo: oaiBBU
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
