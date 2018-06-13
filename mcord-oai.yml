@@ -69,6 +69,9 @@ xos_services:
     path: orchestration/xos_services/vrouter
   - name: addressmanager
     path: orchestration/xos_services/addressmanager
+  - name: oaibbu
+    path: orchestration/xos_services/oaibbu
+    keypair: mcord_rsa
   - name: vbbu
     path: orchestration/xos_services/vbbu
     keypair: mcord_rsa
@@ -80,7 +83,7 @@ xos_services:
     keypair: mcord_rsa
   - name: vspgwc
     path: orchestration/xos_services/vspgwc
-    keypair: mcord_rsa    
+    keypair: mcord_rsa
   - name: vspgwu
     path: orchestration/xos_services/vspgwu
     keypair: mcord_rsa
