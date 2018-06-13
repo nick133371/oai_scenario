@@ -42,7 +42,7 @@ imports:
    - custom_types/vspgwuvendor.yaml
    - custom_types/vbbuservice.yaml
    - custom_types/oaibbuservice.yaml
-
+#   - custom_types/oaibbuserviceinstance.yaml
 
 topology_template:
   node_templates:
@@ -227,7 +227,7 @@ topology_template:
       properties:
         name: OAIBBUService
         view_url: /admin/oaibbu/oaibbu/$id$/
-        kind: vbbu
+        kind: oaibbu
         public_key: {{ lookup('file', config_cord_profile_dir + '/key_import/mcord_rsa.pub') }}
         private_key_fn: /opt/xos/services/oaibbu/keys/mcord_rsa
       artifacts:
