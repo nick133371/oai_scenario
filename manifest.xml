@@ -4,8 +4,8 @@
   <remote  name="opencord"
            fetch=".."
            review="https://gerrit.opencord.org/"
-           revision="cord-4.1" />
-  <default revision="cord-4.1"
+           revision="cord-5.0" />
+  <default revision="cord-5.0"
            remote="opencord"
            sync-j="4" />
 
@@ -34,9 +34,15 @@
 <project path="orchestration/xos_services/olt-service" name="olt-service" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vtn-service" name="vtn-service" groups="orchestration,services"/>
 
+<project path="orchestration/xos_services/oaibbu" name="oaiBBU" groups="orchestration,services"/>
+
+<project path="orchestration/xos_services/vbbu" name="vBBU" groups="orchestration,services"/>
+<project path="orchestration/xos_services/vmme" name="vMME" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vpgwc" name="vPGWC" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vsgw" name="vSGW" groups="orchestration,services"/>
 <project path="orchestration/xos_services/progran" name="progran" groups="orchestration,services"/>
+<project path="orchestration/xos_services/vhss" name="vHSS" groups="orchestration,services"/>
+<project path="orchestration/xos_services/hss_db" name="hss_db" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vmm" name="vMM" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vsm" name="vSM" groups="orchestration,services"/>
 <project path="orchestration/xos_services/venb" name="venb" groups="orchestration,services"/>
@@ -45,14 +51,6 @@
 <project path="orchestration/xos_services/vspgwc" name="vspgwc" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vspgwu" name="vspgwu" groups="orchestration,services"/>
 <project path="orchestration/xos_services/epc-service" name="epc-service" groups="orchestration,services"/>
-
-<!-- vMME, vHSS, oaispgw is 3 component for oai-based M-CORD -->
-<project path="orchestration/xos_services/oaibbu" name="oaiBBU" groups="orchestration,services"/>
-<project path="orchestration/xos_services/vbbu" name="vBBU" groups="orchestration,services"/>
-<project path="orchestration/xos_services/vmme" name="vMME" groups="orchestration,services"/>
-<project path="orchestration/xos_services/vhss" name="vHSS" groups="orchestration,services"/>
-<project path="orchestration/xos_services/oaispgw" name="oaispgw" groups="orchestration,services"/>
-<!-- The end of 3 services declaration -->
 
 <project path="orchestration/xos_services/vEE" name="vEE" groups="orchestration,services"/>
 <project path="orchestration/xos_services/vEG" name="vEG" groups="orchestration,services"/>
