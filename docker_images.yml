@@ -1,3 +1,5 @@
+
+
 ---
 # Copyright 2017-present Open Networking Foundation
 #
@@ -30,10 +32,9 @@ pull_only_images:
   - "gliderlabs/consul-server:0.6"
   - "gliderlabs/registrator:v7"
   - "nginx:1.13"
-  - "onosproject/onos:1.12.0"
+  - "onosproject/onos:1.10.10"
   - "redis:3.2"
   - "node:7.9.0" # remove once the issue with node:candidate is resolved
-  - "sebp/elk:564"
 
 # buildable_images - list of images that we build from Dockerfiles
 #
@@ -201,24 +202,12 @@ buildable_images:
     repo: exampleservice
     path: "xos/synchronizer"
     dockerfile: "Dockerfile.synchronizer"
-
-  - name: xosproject/oaibbu-synchronizer
-    repo: oaiBBU
-    path: "xos/synchronizer"
-    dockerfile: "Dockerfile.synchronizer"
-
   - name: xosproject/vmme-synchronizer
     repo: vMME
     path: "xos/synchronizer"
     dockerfile: "Dockerfile.synchronizer"
-
-  - name: xosproject/vhss-synchronizer
-    repo: vHSS
-    path: "xos/synchronizer"
-    dockerfile: "Dockerfile.synchronizer"
-
-  - name: xosproject/hssdb-synchronizer
-    repo: hss_db
+  - name: xosproject/venb-synchronizer
+    repo: venb
     path: "xos/synchronizer"
     dockerfile: "Dockerfile.synchronizer"
 
@@ -257,12 +246,28 @@ buildable_images:
     path: "xos/synchronizer"
     dockerfile: "Dockerfile.synchronizer"
 
-  - name: xosproject/rcord-synchronizer
-    repo: rcord
+  - name: xosproject/vmme-synchronizer
+    repo: vMME
     path: "xos/synchronizer"
     dockerfile: "Dockerfile.synchronizer"
 
-  - name: xosproject/progran-synchronizer
-    repo: progran
+  - name: xosproject/vhss-synchronizer
+    repo: vHSS
     path: "xos/synchronizer"
     dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/oaispgw-synchronizer
+    repo: oaispgw
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/vbbu-synchronizer
+    repo: vBBU
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
+  - name: xosproject/oaibbu-synchronizer
+    repo: oaiBBU
+    path: "xos/synchronizer"
+    dockerfile: "Dockerfile.synchronizer"
+
