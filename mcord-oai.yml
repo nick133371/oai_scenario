@@ -1,4 +1,4 @@
----
+
 
 # Copyright 2017-present Open Networking Foundation
 #
@@ -303,7 +303,7 @@ compute_relations:
 image_dir: /opt/cord_profile/images # Should change the build to symlink instead of copy images?
 xos_images:
   - name: "image-oai"
-    url: "https://github.com/aweimeow/oai_scenario/releases/download/ciab-4.1/oai_cp_sep_compress.qcow2"
+    url: "https://github.com/aweimeow/oai_scenario/releases/download/ciab-5.0/oai_spgw_seperated.qcow2"
     checksum: "sha256:3f2044c59063b6ee72d898204e4cfa9beb08a5854f6a4bae589b01a11508cbcf"
     
   - name: "develop-oai-bbu"

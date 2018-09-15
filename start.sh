@@ -20,6 +20,7 @@ cp vtn-service.yaml.j2 $DST/orchestration/profiles/mcord/templates/
 cp mcord-oai-test-playbook.yml $DST/orchestration/profiles/mcord/test/
 cp manifest.xml $DST/.repo/manifests/default.xml
 cp config-maas.yml ~/cord/build/maas/roles/maas/tasks/config-maas.yml
+cp main.yml ~/cord/build/platform-install/roles/prereqs-common/tasks/main.yml
 
 # Use custom version of services instead official
 cd ~/cord/orchestration/xos_services
